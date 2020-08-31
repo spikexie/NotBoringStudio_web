@@ -64,7 +64,7 @@
 		<ul class="subnav fl">
 
             {% for cag in categories %}
-                <li><a href="/goods/?cag = {{ cag.id }}&amp;page=1" class="{{ cag.cag_css }}">{{cag.cag_name}}</a></li>
+                <li><a href="#model0{{ cag.id }}" class="{{ cag.cag_css }}">{{cag.cag_name}}</a></li>
             {% endfor %}
 
 		</ul>
@@ -87,7 +87,7 @@
     {% for cag in categories %}
         <div class="list_model">
 		<div class="list_title clearfix">
-			<h3 class="fl" id="model01">{{cag.cag_name}}</h3>
+			<h3 class="fl" id="model0{{ cag.id }}">{{cag.cag_name}}</h3>
 {#			<div class="subtitle fl">#}
 {#				<span>|</span>#}
 {#				<a href="#">鲜芒</a>#}

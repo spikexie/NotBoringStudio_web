@@ -63,13 +63,13 @@ def goods(request):
     """商品分类页面"""
 
     # 获取传过来的分类id
-    cag_id = request.GET.get('cag', 2)
+    cag_id = request.GET.get('cag', 1)
     # 获取分类对象
     current_cag = GoodsCategory.objects.get(id=cag_id)
     # 当前分类下所有商品
     # 一样可以用
-    goods_data = GoodsInfo.objects.filter(goods_cag_id=cag_id)
-    # goods_data = current_cag.goodsinfo_set.all()
+    goods_data = GoodsInfo.objects.filter(goods_cag=current_cag)
+    #goods_data = current_cag.goodsinfo_set.all()
     # 所有分类
     categories = GoodsCategory.objects.all()
     # 购物车所有商品总数
