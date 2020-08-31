@@ -85,3 +85,4 @@ def goods(request):
                                           'goods_data': goods_data,
                                           'cart_goods_count': cart_goods_count,
                                           'categories': categories})
+
