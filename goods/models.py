@@ -20,7 +20,7 @@ class GoodsCategory(models.Model):
 class GoodsInfo(models.Model):
     # 商品名字
     goods_name = models.CharField(max_length=100)
-    # 商品价格
+    # 商品价格 Decimal?  DecimalField(max_digits=None, decimal_places=None, **options)
     goods_price = models.IntegerField(default=0)
     # 商品描述
     goods_desc = models.CharField(max_length=2000)
