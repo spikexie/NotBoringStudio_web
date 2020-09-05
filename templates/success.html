@@ -14,60 +14,48 @@
 				<div class="login_info fl">
 					欢迎您：<em>nbs</em>
 				</div>
+
 			</div>
 		</div>		
 	</div>
 
 	<div class="search_bar clearfix">
 		<a href="index.html" class="logo fl"><img src="/static/images/logo.png"></a>
-		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;提交订单</div>
-		<div class="search_con fr">
-			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
-			<input type="button" class="input_btn fr" name="" value="搜索">
-		</div>		
+		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;订单提交成功</div>
 	</div>
 	
 	<h3 class="common_title">收货地址</h3>
-	<form action ="/cart/submit_order/" method = "post">
-        {% csrf_token %}
-
 	<div class="common_list_con clearfix">
 		<dl>
 			<dd>
 				<table>
+                    <tr>
+						<td>订单编号：</td>
+						<td>{{ orderinfo.order_id }}</td>
+					</tr>
 					<tr>
 						<td>收货地址：</td>
-						<td><input style="align-content: baseline" type="text" name="adr"> </td>
+						<td>{{ orderinfo.order_addr }}</td>
 					</tr>
 					<tr>
 						<td>收货人：</td>
-						<td><input style="align-content: baseline" type="text" name="recv"> </td>
+						<td>{{ orderinfo.order_recv }} </td>
 					</tr>
 					<tr>
 						<td>联系电话：</td>
-						<td><input style="align-content: baseline" type="text" name="tel"> </td>
+						<td>{{orderinfo.order_tel}}</td>
 					</tr>
 					<tr>
 						<td>备注（邮箱）：</td>
-						<td><textarea style="align-content: baseline" type="text" name="extra"></textarea> </td>
+						<td>{{orderinfo.order_comment}} </td>
 					</tr>
 				</table>
 			</dd>
 		</dl>
+{#		<a href="user_center_site.html" class="edit_site">编辑收货地址</a>#}
+
 	</div>
 	
-	<h3 class="common_title">支付方式</h3>	
-	<div class="common_list_con clearfix">
-		<div class="pay_style_con clearfix">
-			<input type="radio" name="pay_style">
-			<label class="weixin">微信支付</label>
-			<input type="radio" name="pay_style">
-			<label class="zhifubao">支付宝</label>
-			<input type="radio" name="pay_style">
-			<label class="bank">Chase quick pay</label>
-		</div>
-	</div>
-
 	<h3 class="common_title">商品列表</h3>
 	
 	<div class="common_list_con clearfix">
@@ -78,16 +66,16 @@
 			<li class="col04">数量</li>
 			<li class="col05">小计</li>		
 		</ul>
-        {% for goods in cart_goods_list %}
+        {% for goods in order_goods_list %}
             <ul class="goods_list_td clearfix">
 			<li class="col01">1</li>
-			<li class="col02"><img src="/static/images/goods/{{ goods.goods_image }}"></li>
-			<li class="col03">{{ goods.goods_name }}</li>
+			<li class="col02"><img src="/static/images/goods/{{ goods.goods_info.goods_image }}"></li>
+			<li class="col03">{{ goods.goods_info.goods_name }}</li>
 			<li class="col04">份</li>
-			<li class="col05">${{ goods.goods_price }}</li>
+			<li class="col05">${{ goods.goods_info.goods_price }}</li>
 			<li class="col06">{{ goods.goods_num }}</li>
 			<li class="col07">${{ goods.total_money }}</li>
-		    </ul>
+		</ul>
         {% endfor %}
 	</div>
 
@@ -95,16 +83,11 @@
 
 	<div class="common_list_con clearfix">
 		<div class="settle_con">
-			<div class="total_goods_count">共<em>{{ cart_goods_count }}</em>件商品，总金额<b>${{ cart_goods_money }}</b></div>
+			<div class="total_goods_count">共<em>{{ total_num }}</em>件商品，总金额<b>${{total_money }}</b></div>
 			<div class="transit">运费：<b>$1</b></div>
-			<div class="total_pay">实付款：<b>${{ cart_goods_money|add:1 }}</b></div>
+			<div class="total_pay">实付款： <b>${{ total_money|add:1 }}</b></div>
 		</div>
 	</div>
-
-	<div class="order_submit clearfix">
-		<a href="/cart/submit_order" id="order_btn">提交订单</a>
-	</div>	
-
 	<div class="footer">
 		<div class="foot_link">
 			<a href="#">关于我们</a>
@@ -118,5 +101,29 @@
 		<p>CopyRight © 2020 Not Boring Studio   All Rights Reserved</p>
 		<p>电话：010-****888    京ICP备*******8号</p>
 	</div>
-    </body>
+
+{#	<div class="popup_con">#}
+{#		<div class="popup">#}
+{#			<p>订单提交成功！</p>#}
+{#		</div>#}
+{#		#}
+{#		<div class="mask"></div>#}
+{#	</div>#}
+{#	<script type="text/javascript" src="js/jquery-1.12.2.js"></script>#}
+{#	<script type="text/javascript">#}
+{#		$('#order_btn').click(function() {#}
+{#			localStorage.setItem('order_finish',2);#}
+{##}
+{#			$('.popup_con').fadeIn('fast', function() {#}
+{##}
+{#				setTimeout(function(){#}
+{#					$('.popup_con').fadeOut('fast',function(){#}
+{#						window.location.href = 'index.html';#}
+{#					});	#}
+{#				},3000)#}
+{#				#}
+{#			});#}
+{#		});#}
+{#	</script>#}
+</body>
 </html>

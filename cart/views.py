@@ -1,6 +1,8 @@
+import time
+
+from cart.models import OrderGoods, OrderInfo
 from django.shortcuts import render, redirect
 
-# Create your views here.
 from goods.models import GoodsInfo
 
 
@@ -95,6 +97,80 @@ def place_order(request):
         # 总价格
         cart_goods_money += cart_goods.total_money
 
-    return render(request, 'place_order.html',{'cart_goods_list':cart_goods_list,
-                                               'cart_goods_count':cart_goods_count,
-                                               'cart_goods_money':cart_goods_money})
+    return render(request, 'place_order.html', {'cart_goods_list': cart_goods_list,
+                                                'cart_goods_count': cart_goods_count,
+                                                'cart_goods_money': cart_goods_money})
+
+
+def submit_order(request):
+    """提交订单页面"""
+
+    # 收货地址
+    addr = request.POST.get('adr', 'fff')
+    # 收货人
+    recv = request.POST.get('recv', 'fff')
+    # 联系电话
+    tel = request.POST.get('tel', 'fff')
+    # 备注
+    extra = request.POST.get('extra', 'fff')
+    # 实例化订单对象
+    order_info = OrderInfo()  # 获取生成订单的数据
+    # 给订单赋值
+    order_info.order_addr = addr
+
+    order_info.order_tel = tel
+    order_info.order_recv = recv
+    order_info.order_comment = extra
+    # 订单编号 日期
+    order_info.order_id = str(time.time() * 1000000)
+    order_id = order_info.order_id
+    # 数据保存进数据库
+    order_info.save()
+    # 提交成功页面
+    response = redirect('cart/submit_success/?id=%s' % order_id)
+    # 遍历购物车数据
+    # 生成orde_rgoods
+    for goods_id, goods_num in request.COOKIES.items():
+        if not goods_id.isdigit():
+            continue
+        order_goods = OrderGoods()
+
+        # 获取订单商品对象
+        cart_goods = GoodsInfo.objects.get(id=goods_id)
+        # 商品添加进订单对象中
+        order_goods.goods_info = cart_goods
+        # order_goods.goods_info_id = goods_id
+        # 商品数量
+        order_goods.goods_num = goods_num
+        # 属于哪一个订单
+        order_goods.goods_order = order_info
+        # 保存进数据库
+        order_goods.save()
+        # 删除数据从cookie
+        response.delete_cookie(goods_id)
+    return response
+
+
+def submit_success(request):
+    """订单提交成功"""
+    # 获取传来的订单号
+    order_id = request.GET.get('id')
+    # 获取订单对象
+    orderinfo = OrderInfo.objects.get(order_id=order_id)
+    # orderinfo = OrderInfo.ordergoods_set
+    order_goods_list = OrderGoods.objects.filter(goods_order=orderinfo)
+    # 商品总金额
+    total_money = 0
+    # 商品总数
+    total_num = 0
+    for goods in order_goods_list:
+        # 商品价格小计
+        goods.total_money = goods.goods_info.goods_price * goods.goods_num
+        total_money += goods.total_money
+        # 商品总数量
+        total_num += goods.goods_num
+
+    return render(request, 'success.html', {'orderinfo': orderinfo,
+                                            'order_goods_list': order_goods_list,
+                                            'total_money': total_money,
+                                            'total_num': total_num})
