@@ -19,8 +19,8 @@
 	</div>
 
 	<div class="search_bar clearfix">
-		<a href="index.html" class="logo fl"><img src="/static/images/logo.png"></a>
-		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;提交订单</div>
+		<a href="index" class="logo fl"><img src="/static/images/logo.png"></a>
+		<div class="sub_page_name fl">|&nbsp;&nbsp;提交订单</div>
 		<div class="search_con fr">
 			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
 			<input type="button" class="input_btn fr" name="" value="搜索">
@@ -28,34 +28,34 @@
 	</div>
 	
 	<h3 class="common_title">收货地址</h3>
-	<form action ="/cart/submit_order/" method = "post">
+	<form action ="/cart/submit_order/" method="POST">
         {% csrf_token %}
 
-	<div class="common_list_con clearfix">
-		<dl>
-			<dd>
-				<table>
-					<tr>
-						<td>收货地址：</td>
-						<td><input style="align-content: baseline" type="text" name="adr"> </td>
-					</tr>
-					<tr>
-						<td>收货人：</td>
-						<td><input style="align-content: baseline" type="text" name="recv"> </td>
-					</tr>
-					<tr>
-						<td>联系电话：</td>
-						<td><input style="align-content: baseline" type="text" name="tel"> </td>
-					</tr>
-					<tr>
-						<td>备注（邮箱）：</td>
-						<td><textarea style="align-content: baseline" type="text" name="extra"></textarea> </td>
-					</tr>
-				</table>
-			</dd>
-		</dl>
-	</div>
-	
+		<div class="common_list_con clearfix">
+			<dl>
+				<dd>
+					<table>
+						<tr>
+							<td>收货地址：</td>
+							<td><input style="align-content: baseline" type="text" name="adr"> </td>
+						</tr>
+						<tr>
+							<td>收货人：</td>
+							<td><input style="align-content: baseline" type="text" name="recv"> </td>
+						</tr>
+						<tr>
+							<td>联系电话：</td>
+							<td><input style="align-content: baseline" type="text" name="tel"> </td>
+						</tr>
+						<tr>
+							<td>备注（邮箱）：</td>
+							<td><textarea style="align-content: baseline" type="text" name="extra"></textarea> </td>
+						</tr>
+					</table>
+				</dd>
+			</dl>
+		</div>
+
 	<h3 class="common_title">支付方式</h3>	
 	<div class="common_list_con clearfix">
 		<div class="pay_style_con clearfix">
@@ -81,7 +81,7 @@
         {% for goods in cart_goods_list %}
             <ul class="goods_list_td clearfix">
 			<li class="col01">1</li>
-			<li class="col02"><img src="/static/images/goods/{{ goods.goods_image }}"></li>
+			<li class="col02"><img src="/static/images/goods/{{ goods.goods_image }}" alt=""></li>
 			<li class="col03">{{ goods.goods_name }}</li>
 			<li class="col04">份</li>
 			<li class="col05">${{ goods.goods_price }}</li>
@@ -101,9 +101,10 @@
 		</div>
 	</div>
 
-	<div class="order_submit clearfix">
-		<a href="/cart/submit_order" id="order_btn">提交订单</a>
+	<div class="order_submit clearfix fr">
+		<button id="order_btn" type="submit" class>提交订单</button>
 	</div>	
+	</form>
 
 	<div class="footer">
 		<div class="foot_link">
