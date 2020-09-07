@@ -19,6 +19,10 @@ from django.urls import path
 from cart.views import add_cart, show_cart, remove_cart, place_order
 from goods.views import index, detail, goods
 
+from cart.views import submit_order
+
+from cart.views import submit_success
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # para1: url 要访问的地址正则表达式 para2：访问的视图函数名字
@@ -34,7 +38,11 @@ urlpatterns = [
     path('cart/show_cart/', show_cart),
     # 在购物车删除商品
     path('cart/remove_cart/', remove_cart),
-    # 提交订单页面
+    # 订单页面
     path('place_order/', place_order),
+    # 提交订单页面
+    path('cart/submit_order/', submit_order),
+    # 提交订单成功页面
+    path('cart/submit_order/cart/submit_success/', submit_success),
 
 ]

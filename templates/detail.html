@@ -50,7 +50,7 @@
 				<span></span>			
 				<ul class="subnav">
                     {% for cag in categories %}
-                        <li><a href="/static/goods/?cag={{ cag.id }}&amp;page=1" class="{{ cag.cag_css }}">{{ cag.cag_name }}</a></li>
+                        <li><a href="/goods/?cag={{ cag.id }}&amp;page=1" class="{{ cag.cag_css }}">{{ cag.cag_name }}</a></li>
                     {% endfor %}
 
 				</ul>
@@ -69,7 +69,7 @@
 		<a href="#">全部分类</a>
 		<span>></span>
         {#    根据商品对象获取分类名字显示    #}
-		<a href="/static/goods/?cag = {{ goods_data.goods_cag.cag.id }}&amp;page=1">{{ goods_data.goods_cag.cag_name }}</a>
+		<a href="/goods/?cag ={{ goods_data.goods_cag.cag_id }}&amp;page=1">{{ goods_data.goods_cag.cag_name }}</a>
 		<span>></span>
 		<a href="#">商品详情</a>
 	</div>

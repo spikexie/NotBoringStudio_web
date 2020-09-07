@@ -19,18 +19,18 @@ class OrderInfo(models.Model):
     # 电话
     order_tel = models.CharField(max_length=10)
     # 运费
-    order_fee = models.ImageField(default=10)
+    order_fee = models.IntegerField(default=1)
     # 订单备注
     order_comment = models.CharField(max_length=200)
     # 订单状态
-    order_status = models.ImageField(default=1, choices=status)
+    order_status = models.IntegerField(default=1, choices=status)
 
 
 class OrderGoods(models.Model):
     # 订单商品模型
     # 所属商品
-    goods_info = models.ForeignKey('goods.GoodsInfo', on_delete=models.CASCADE)
+    goods_info = models.ForeignKey('goods.GoodsInfo',on_delete=models.CASCADE)
     # 数量
     goods_num = models.IntegerField()
     # 所属订单
-    goods_order = models.ForeignKey('OrderInfo', on_delete=models.CASCADE)
+    goods_order = models.ForeignKey('OrderInfo',on_delete=models.CASCADE)

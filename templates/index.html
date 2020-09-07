@@ -94,7 +94,7 @@
 {#				<a href="#">加州提子</a>#}
 {#				<a href="#">亚马逊牛油果</a>#}
 {#			</div>#}
-			<a href="/goods/?cag={{ cag.id }}&amp;page=1" class="goods_more fr" id="fruit_more">查看更多 ></a>
+			<a href="?cag={{ cag.id }}&amp;page=1" class="goods_more fr" id="fruit_more">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -102,14 +102,14 @@
 			<ul class="goods_list fl">
                 {% for goods in cag.goods_list %}
                     <li>
-					<h4><a href="/detail/?id={{ goods.id }}">{{ goods.goods_name }}</a></h4>
-					<a href="/detail/?id={{ goods.id }}"><img src="../static/images/goods/{{ goods.goods_image }}"></a>
-					<div class="prize">$ {{ goods.goods_price }}</div><li>
-				</li>
+					    <h4><a href="/detail/?id={{ goods.id }}">{{ goods.goods_name }}</a></h4>
+					    <a href="/detail/?id={{ goods.id }}"><img src="../static/images/goods/{{ goods.goods_image }}"></a>
+					    <div class="prize">$ {{ goods.goods_price }}</div>
+				    </li>
                 {% endfor %}
 			</ul>
 		</div>
-	</div>
+	    </div>
     {% endfor %}
 
 

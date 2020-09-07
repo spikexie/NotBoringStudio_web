@@ -10,7 +10,7 @@
 				<span></span>			
 				<ul class="subnav">
                     {% for cag in categories %}
-                        <li><a href="?cag={{ cag.id }}&amp;page=1" class="{{ cag.cag_css }}">{{ cag.cag_name }}</a></li>
+                        <li><a href="/goods/?cag={{ cag.id }}&amp;page=1" class="{{ cag.cag_css }}">{{ cag.cag_name }}</a></li>
                     {% endfor %}
                     
 
@@ -23,7 +23,7 @@
 	<div class="breadcrumb">
 		<a href="/">全部分类</a>
 		<span>></span>
-		<a href="#">{{ current_cag.cag_name }}</a>
+		<a href="?cag={{ cag.id }}">{{ current_cag.cag_name }}</a>
 	</div>
 
 	<div class="main_wrap clearfix">
