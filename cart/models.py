@@ -25,6 +25,9 @@ class OrderInfo(models.Model):
     # 订单状态
     order_status = models.IntegerField(default=1, choices=status)
 
+    def __str__(self):
+        return self.order_tel
+
 
 class OrderGoods(models.Model):
     # 订单商品模型

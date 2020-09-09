@@ -106,13 +106,13 @@ def submit_order(request):
     """提交订单页面"""
 
     # 收货地址
-    addr = request.POST.get('adr', 'fff')
+    addr = request.POST.get('adr', 'fail')
     # 收货人
-    recv = request.POST.get('recv', 'fff')
+    recv = request.POST.get('recv', 'fail')
     # 联系电话
-    tel = request.POST.get('tel', 'fff')
+    tel = request.POST.get('tel', 'fail')
     # 备注
-    extra = request.POST.get('extra', 'fff')
+    extra = request.POST.get('extra', 'fail')
     # 实例化订单对象
     order_info = OrderInfo()  # 获取生成订单的数据
     # 给订单赋值
