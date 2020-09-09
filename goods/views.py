@@ -86,7 +86,8 @@ def goods(request):
                                           'cart_goods_count': cart_goods_count,
                                           'categories': categories})
 
-def new(request):
+
+def main(request):
     # 查询商品分类
     categories = GoodsCategory.objects.all()
     # 每个分类提取数据
@@ -112,5 +113,5 @@ def new(request):
         cart_goods_count = cart_goods_count + int(goods_num)
 
     # 购物车商品总数
-    return render(request, 'new.html', {'categories': categories, 'cart_goods_list': cart_goods_list,
+    return render(request, 'main.html', {'categories': categories, 'cart_goods_list': cart_goods_list,
                                           'cart_goods_count': cart_goods_count})

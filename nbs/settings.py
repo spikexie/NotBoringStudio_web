@@ -83,7 +83,7 @@ DATABASES = {
         'PORT': '3306',
         # 账号密码
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'root1234',
     }
 }
 

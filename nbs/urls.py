@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from cart.views import add_cart, show_cart, remove_cart, place_order
-from goods.views import index, detail, goods, new
+from goods.views import index, detail, goods, main
 
 from cart.views import submit_order
 
@@ -46,5 +46,5 @@ urlpatterns = [
     path('cart/submit_order/cart/submit_success/', submit_success),
 
     # TESTING front page
-    path('new/', new),
+    path('main/', main),
 ]

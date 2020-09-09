@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'new_base.html' %}
 
 {%block head%}{%endblock head%}
 
@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="breadcrumb">
-		<a href="/">全部分类</a>
+		<a href="/new/">全部分类</a>
 		<span>></span>
 		<a href="?cag={{ cag.id }}">{{ current_cag.cag_name }}</a>
 	</div>
@@ -54,7 +54,7 @@
                             <span class="prize">${{ goods.goods_price }}</span>
                             <h4><a href="/detail/?id={{ goods.id }}/">{{ goods.goods_name }}</a></h4>
 {#                            <span class="unit">{{ g.gprice }}/{{ g.gunit }}</span>#}
-{#                            <a href="/cart/add{{goods.id}}_1/" class="add_goods" title="加入购物车"></a>#}
+                           <a href="/cart/add_cart/?id={{ goods.id }}" class="add_goods" title="加入购物车"></a>
                         </div>
                     </li>
                 {% endfor %}
