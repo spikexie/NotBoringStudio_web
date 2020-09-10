@@ -3,86 +3,125 @@
 {%block head%}{%endblock head%}
 
 {% block body %}
-	<div class="w3-content">
-	<h3 class="common_title">收货地址</h3>
-	<form action ="/cart/submit_order/" method="POST" class="w3-white">
-        {% csrf_token %}
-
-		<div class="common_list_con clearfix w3-content">
-			<dl>
-				<dd>
-					<table>
-						<tr>
-							<td>收货地址：</td>
-							<td><input style="align-content: baseline" type="text" name="adr"> </td>
-						</tr>
-						<tr>
-							<td>收货人：</td>
-							<td><input style="align-content: baseline" type="text" name="recv"> </td>
-						</tr>
-						<tr>
-							<td>联系电话：</td>
-							<td><input style="align-content: baseline" type="text" name="tel"> </td>
-						</tr>
-						<tr>
-							<td>备注（邮箱）：</td>
-							<td><textarea style="align-content: baseline" type="text" name="extra"></textarea> </td>
-						</tr>
-					</table>
-				</dd>
-			</dl>
-		</div>
-
-		<h3 class="common_title">支付方式</h3>
-		<div class="common_list_con clearfix w3-content">
-			<div class="pay_style_con clearfix">
-				<input type="radio" name="pay_style">
-				<label class="weixin">微信支付</label>
-				<input type="radio" name="pay_style">
-				<label class="zhifubao"> ______ </label>
-				<input type="radio" name="pay_style">
-				<label class="bank">Chase quick pay</label>
+<!--顶部图片-->
+	<form action ="/cart/submit_order/" method="POST">
+			{% csrf_token %}
+		<div class="content">
+			<h1>收货地址</h1>
+<!--			支付人信息-->
+			<div class="common_table clearfix">
+				<dl>
+					<dd>
+						<table>
+							<tr>
+								<td>收货地址：</td>
+	<!--							Will be checkbox later-->
+								<td><input type="text" name="adr"> </td>
+							</tr>
+							<tr>
+								<td>收货人：</td>
+								<td><input type="text" name="recv"> </td>
+							</tr>
+							<tr>
+								<td>联系电话：</td>
+								<td><input type="text" name="tel"> </td>
+							</tr>
+							<tr>
+								<td>电子邮箱：</td>
+								<td><input type="text" name="extra"> </td>
+							</tr>
+						</table>
+					</dd>
+				</dl>
 			</div>
-		</div>
+			<hr>
 
-		<h3 class="common_title">商品列表</h3>
+<!--			支付方式-->
+			<h1>支付方式</h1>
+<!--			<div class="common_list">-->
+<!--				<div class="pay_style_con clearfix">-->
+<!--					<input type="radio" name="pay_style">-->
+<!--					<label class="weixin">微信支付</label>-->
+<!--					<input type="radio" name="pay_style">-->
+<!--					<label class="zhifubao"> ______ </label>-->
+<!--					<input type="radio" name="pay_style">-->
+<!--					<label class="bank">Chase quick pay</label>-->
+<!--				</div>-->
+<!--			</div>-->
+			<div class="common_list clearfix">
+<!--				<div class="">-->
+					<div class="payment">
+					<input type="radio" name="payment">
+					<label class="weixin">微信支付</label>
+					</div>
+					<div class="payment">
+					<input type="radio" name="payment">
+					<label class="zhifubao">.........</label>
+					</div>
+					<div class="payment">
+					<input type="radio" name="payment">
+					<label class="bank">quick pay</label>
+					</div>
+			</div>
+			<hr>
 
-		<div class="common_list_con clearfix w3-content">
-			<ul class="goods_list_th clearfix">
-				<li class="col01">商品名称</li>
-				<li class="col02">商品单位</li>
-				<li class="col03">商品价格</li>
-				<li class="col04">数量</li>
-				<li class="col05">小计</li>
+
+<!--			<div class="common_list_con clearfix w3-content">-->
+<!--				<ul class="goods_list_th clearfix">-->
+<!--					<li class="col01">商品名称</li>-->
+<!--					<li class="col02">商品单位</li>-->
+<!--					<li class="col03">商品价格</li>-->
+<!--					<li class="col04">数量</li>-->
+<!--					<li class="col05">小计</li>-->
+<!--				</ul>-->
+<!--				{% for goods in cart_goods_list %}-->
+<!--					<ul class="goods_list_td clearfix">-->
+<!--					<li class="col01">1</li>-->
+<!--					<li class="col02"><img src="/static/images/goods/{{ goods.goods_image }}" alt=""></li>-->
+<!--					<li class="col03">{{ goods.goods_name }}</li>-->
+<!--					<li class="col04">份</li>-->
+<!--					<li class="col05">${{ goods.goods_price }}</li>-->
+<!--					<li class="col06">{{ goods.goods_num }}</li>-->
+<!--					<li class="col07">${{ goods.total_money }}</li>-->
+<!--					</ul>-->
+<!--				{% endfor %}-->
+<!--			</div>-->
+
+<!--			<h3 class="common_title">总金额结算</h3>-->
+
+<!--			<div class="common_list_con clearfix w3-content">-->
+<!--				<div class="settle_con">-->
+<!--					<div class="total_goods_count">共<em>{{ cart_goods_count }}</em>件商品，总金额<b>${{ cart_goods_money }}</b></div>-->
+<!--					<div class="transit">运费：<b>$1</b></div>-->
+<!--					<div class="total_pay">实付款：<b>${{ cart_goods_money|add:1 }}</b></div>-->
+<!--				</div>-->
+<!--			</div>-->
+
+	<!--		<div class="order_submit clearfix fr w3-padding-large">-->
+			<h1>商品列表</h1>
+			{% for cart_goods in cart_goods_list %}
+			<ul class="cart_item clearfix">
+				<li class="pic"><img src="/static/images/goods/{{ goods.goods_image }}"></li>
+				<li class="goods_name">{{ cart_goods.goods_name }}</li>
+				<li class="goods_num">共{{ cart_goods.goods_num }}份</li>
+				<li class="price">${{ cart_goods.goods_price }}/份</li>
+				<li class="goods_total">${{ cart_goods.total_money }}</li>
 			</ul>
-			{% for goods in cart_goods_list %}
-				<ul class="goods_list_td clearfix">
-				<li class="col01">1</li>
-				<li class="col02"><img src="/static/images/goods/{{ goods.goods_image }}" alt=""></li>
-				<li class="col03">{{ goods.goods_name }}</li>
-				<li class="col04">份</li>
-				<li class="col05">${{ goods.goods_price }}</li>
-				<li class="col06">{{ goods.goods_num }}</li>
-				<li class="col07">${{ goods.total_money }}</li>
-				</ul>
+			<hr>
 			{% endfor %}
 		</div>
 
-		<h3 class="common_title">总金额结算</h3>
-
-		<div class="common_list_con clearfix w3-content">
-			<div class="settle_con">
-				<div class="total_goods_count">共<em>{{ cart_goods_count }}</em>件商品，总金额<b>${{ cart_goods_money }}</b></div>
-				<div class="transit">运费：<b>$1</b></div>
-				<div class="total_pay">实付款：<b>${{ cart_goods_money|add:1 }}</b></div>
+		<div class="settlements">
+			<div class="total">
+				<h4>共计<b>{{ cart_goods_count }}</b>件商品</h4>
+				<h3>小计: ${{ cart_goods_money }}</h3>
+				<h3>运费：$1</h3>
+				<h2>实付：$<span>{{ cart_goods_money|add:1 }}</span></h2>
 			</div>
+				<button id="order_btn" type="submit" class="tag">提交订单</button>
 		</div>
 
-<!--		<div class="order_submit clearfix fr w3-padding-large">-->
-		<div class="order_submit order_btn">
-			<button id="order_btn" type="submit" class="">提交订单</button>
-		</div>
+
 	</form>
 
-	</div>
 {% endblock body%}

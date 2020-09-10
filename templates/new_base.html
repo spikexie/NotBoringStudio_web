@@ -4,9 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>nbs-首页</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" type="text/css" href="/static/css/theme.css">
 	<script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/static/js/slide.js"></script>
@@ -14,41 +12,50 @@
 </head>
 <body>
 <!--TOP NAVIBAR-->
-	<div class="w3-top">
-        <div class="w3-row w3-opacity-min w3-padding w3-black">
-            <div class="w3-col s3">
-                <a href="/main/" class="w3-button w3-block w3-black">HOME</a>
+	<div class="top_nav">
+            <div class="label">
+                <a href="/main/">HOME</a>
             </div>
-            <div class="w3-col s3">
-                <a href="/main/#menu" class="w3-button w3-block w3-black">MENU</a>
+            <div class="label">
+                <a href="/main/#menu">MENU</a>
             </div>
-            <div class="w3-col s3">
-                <a href="/main/#account" class="w3-button w3-block w3-black">ACCOUNT</a>
+            <div class="label">
+                <a href="/main/#account">ACCOUNT</a>
             </div>
-            <div class="w3-col s3">
-                <a href="/cart/show_cart/" class="w3-button w3-block w3-black" id="show_count">CART({{ cart_goods_count }})</a>
+            <div class="label">
+                <a href="/cart/show_cart/" id="show_count">CART({{ cart_goods_count }})</a>
             </div>
-        </div>
     </div>
 
 <!--Body starts from here-->
-<!--    <div class="w3-padding"> Top NAV Bar </div>-->
+    <div id="home">
+<!--        <div class="tag display-bl">-->
+<!--            <span>Open from 11am to 5pm</span>-->
+<!--        </div>-->
+        <div>
+            <img src="/static/images/goods/goods06.jpg" alt="" height="10%" width="100%">
+        </div>
+<!--        <div class="tag display-br">-->
+<!--            <span>Columbus, OH</span>-->
+<!--        </div>-->
+    </div>
+
     {% block body %}{% endblock body %}
-
 <!--	FOOTER -->
-	<div class="w3-red">
-<!--		<div class="foot_link">-->
-			<a href="#" class="w3-text-white">关于我们</a>
-			<span>|</span>
-			<a href="#" class="w3-text-white">联系我们</a>
-			<span>|</span>
-			<a href="#" class="w3-text-white">招聘人才</a>
-			<span>|</span>
-			<a href="#" class="w3-text-white">友情链接</a>
-<!--		</div>-->
-		<p>CopyRight © 2020 Not Boring Studio All Rights Reserved</p>
-		<p>电话：010-****888    京ICP备*******8号</p>
-	</div>
-
+    <div class="footer">
+        <span><hr></span>
+        <div class="foot_link">
+            <a href="#">关于我们</a>
+            <span>|</span>
+            <a href="#">联系我们</a>
+            <span>|</span>
+            <a href="#">招聘人才</a>
+            <span>|</span>
+            <a href="#">友情链接</a>
+        </div>
+        <p>电话：010-****888 </p>
+        <small>CopyRight © 2020 Not Boring Studio All Rights Reserved</small>
+    </div>
 </body>
+
 </html>
