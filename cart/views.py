@@ -129,7 +129,7 @@ def submit_order(request):
     # 提交成功页面
     response = redirect('cart/submit_success/?id=%s' % order_id)
     # 遍历购物车数据
-    # 生成orde_rgoods
+    # 生成order_goods
     for goods_id, goods_num in request.COOKIES.items():
         if not goods_id.isdigit():
             continue
@@ -163,6 +163,7 @@ def submit_success(request):
     total_money = 0
     # 商品总数
     total_num = 0
+    pick_up_id = orderinfo.pk
     for goods in order_goods_list:
         # 商品价格小计
         goods.total_money = goods.goods_info.goods_price * goods.goods_num
@@ -173,4 +174,5 @@ def submit_success(request):
     return render(request, 'success.html', {'orderinfo': orderinfo,
                                             'order_goods_list': order_goods_list,
                                             'total_money': total_money,
-                                            'total_num': total_num})
+                                            'total_num': total_num,
+                                            'pick_up_id':pick_up_id})
