@@ -14,6 +14,9 @@ class GoodsCategory(models.Model):
     # 分类图片
     cag_img = models.ImageField(upload_to='cag')
 
+    def __str__(self):
+        return self.cag_name
+
 
 # 商品表
 # 模型类
@@ -28,3 +31,6 @@ class GoodsInfo(models.Model):
     goods_image = models.ImageField(upload_to='goods')
     # 所属分类
     goods_cag = models.ForeignKey('GoodsCategory', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.goods_name
