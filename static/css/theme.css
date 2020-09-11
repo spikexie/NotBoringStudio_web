@@ -1,0 +1,271 @@
+html,body{
+    font-family:Verdana,sans-serif;
+    font-size:15px;
+    line-height:1.5;
+    background-color:#f5efef;
+}
+html{overflow-x:scroll;}
+
+/* frequently used selectors */
+.tag{
+    background-color:#000;
+    color:#fff;
+    display:inline-block;
+    padding-left:8px;
+    padding-right:8px;
+    text-align:center;
+}
+.display-tl{position:absolute;left:0;top:0}
+.display-tr{position:absolute;right:0;top:0}
+.display-bl{position:absolute;left:0;bottom:0}
+.display-br{position:absolute;right:0;bottom:0}
+.display-middle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%)}
+
+.center{text-align:center;}
+.content{
+    padding:5% 5%;
+}
+
+/* goods property */
+.cag_name{
+    color: #0000b3;
+    font-size:28px;
+}
+
+/* goods_name */
+.goods_name{
+    font-size:22px;
+    color: #000;
+}
+
+/* goods_price */
+.price{
+    font-size:22px;
+}
+
+/* goods_des */
+.des{
+    color: grey;
+    font-size:12px;
+    padding-bottom:1%;
+}
+
+
+/* base page */
+/* top navi*/
+.top_nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:4px 4px 4px 4px;
+    background-color:#fff;
+    opacity: 90%;
+    height: 25px;
+    /* z-index:1; top of other elements*/
+}
+
+/* label in top nav */
+.label a{
+    float:left;
+    width: 24.99999%;
+    /*padding:4px 4px 4px 4px;*/
+    text-align:center;
+    color: #000;
+}
+.label a:hover{
+    color:#fff;
+    background-color:#ccc;
+}
+
+
+/* heading pic */
+
+
+/* MAIN.HTML */
+/* MENU */
+
+/* Cag */
+#menu .content .cag{
+    padding:3% 0;
+}
+
+#menu .content .cag_name:hover{
+    border: 2px solid #f5efef;
+}
+
+/* goods content */
+#menu .content .goods{
+    padding-left:10%;
+    padding-right:5%;
+}
+
+#menu .content .goods_name:hover{
+    border: 2px solid #f5efef;
+}
+
+/* add_cart */
+#menu .content .add_cart{
+    font-size:34px;
+    color: purple;
+}
+#menu .content .add_cart:hover{
+    border: 2px solid #f5efef;
+}
+
+
+/* show_cart */
+
+/* cart_item */
+.cart_item{
+    padding:2% 4% 0% 4%;
+}
+.cart_item:hover{
+    box-shadow: 3px 5px 5px 3px rgba(0,0,0,0.3);
+}
+
+/* pic */
+.cart_item .pic{
+    width:100px;
+    height:100px;
+    float:left;
+    background-color:#0fa6e1;
+    margin: 0 2%;
+}
+/* goods_name */
+.cart_item .goods_name{
+    text-align: left;
+    float: left;
+    width:60%;
+}
+/* goods_num */
+.cart_item .goods_num{
+    font-size:16px;
+    text-align:right;
+    padding-top:7px;
+    float: right;
+    width:11%;
+}
+/* delete */
+.cart_item .del a{
+    font-size:16px;
+    color: #0fa6e1;
+    float: right;
+    text-align:right;
+    width:30%
+}
+/* price */
+.cart_item .price{
+    font-size:24px;
+    text-align:left;
+    padding-top:40px;
+    float:left;
+    width:40%;
+}
+/* goods_total */
+.cart_item .goods_total{
+    text-align:right;
+    font-size:32px;
+    width:30%;
+    float:right;
+}
+
+/* Settlement */
+.settlements{
+    padding:0 5% 20% 10%;
+    /*height:80px;*/
+}
+/* Check-out total */
+.settlements .total{
+    text-align: left;
+    width:50%;
+    float: left;
+}
+.settlements .total span{
+    font-size: 30px;
+    color:#f65710;
+}
+/* Check-out Button */
+.settlements a{
+    font-size:40px;
+    text-align:center;
+    border-radius:4px;
+    width:40%;
+    float:right;
+}
+.settlements a:hover{
+    box-shadow: 3px 5px 5px 3px rgba(0,0,0,0.3);
+}
+
+
+/* Place_order */
+/* Receiver Info */
+.content .common_table{
+    padding:1% 5%;
+}
+.content .common_table tr td{
+    font-size:22px;
+}
+.content .common_table tr td input{
+    font-size:22px;
+    style="align-content: baseline";
+}
+
+/* Payment */
+.content .common_list{
+    padding:3% 1%;
+}
+.content .common_list .payment{
+    float:left;
+    width:33%;
+}
+
+.content .common_list input{
+    float:left;
+    margin:14px 7px 14px 0px;
+    /*transition: 0.2s all linear;*/
+}
+/* not working*/
+.content .common_list input:checked {
+    border: 6px solid #000;
+}
+
+.content .common_list label{
+    float:left;
+    border:1px solid #ccc;
+    padding:10px 10px 10px 40px;
+}
+.payment .cash{background:url(../images/pay_icons.png) 8px top no-repeat #fff;}
+.payment .weixin{background:url(../images/pay_icons.png) 6px -36px no-repeat #fff;}
+.payment .zhifubao{background:url(../images/pay_icons.png) 12px -72px no-repeat #fff;}
+.payment .bank{background:url(../images/pay_icons.png) 6px -108px no-repeat #fff;}
+
+.settlements button{
+    font-size:43px;
+    text-align:center;
+    border-radius:4px;
+    width:45%;
+    float:right;
+}
+.settlements button:hover{
+    box-shadow: 3px 5px 5px 3px rgba(0,0,0,0.3);
+}
+
+
+/* Order_Success_Page */
+.content .common_table tr .order_info{
+    color:#0fa6e1;
+}
+
+
+
+/* footer */
+.footer{
+	margin:30px 0;
+	text-align:center;
+}
+
+.foot_link{text-align:center;margin-top:30px;}
+.foot_link a,.foot_link span{color:#000;}
+.foot_link a:hover{color:#fff}
+.foot_link span{padding:0 10px}
+.footer p{margin-top:10px;}

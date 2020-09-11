@@ -1,0 +1,34 @@
+{% extends 'new_base.html' %}
+
+{%block head%}{%endblock head%}
+
+{% block body %}
+
+<!--详细菜单-->
+    <div id="menu">
+        <!--商家及其菜品-->
+        <div class="content">
+            {% for cag in categories %}
+                <div class="cag" >
+                    <a href="/goods/?cag={{ cag.id }}" name="{{cag.cag_name}}" class="cag_name">{{cag.cag_name}}</a>
+                </div>
+                <div class="goods">
+                {% for goods in cag.goods_list %}
+                    <a href="/detail/?id={{ goods.id }}" name="{{goods.goods_name}}" class="goods_name">{{goods.goods_name}}</a>
+                        <span class="price">${{goods.goods_price}}</span>
+    <!--                <a href="/detail/?id={{ goods.id }}" class="display:inline-block;"><img src="../static/images/goods/{{ goods.goods_image }}"></a>-->
+                        <a href="/cart/add_cart/?id={{ goods.id }}" class="add_cart fr">+</a>
+                    <p class="des">{{goods.goods_desc}}</p>
+                    <hr>
+                {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!--账户功能    -->
+    <div class="content" id="account">
+
+    </div>
+
+{% endblock body %}
